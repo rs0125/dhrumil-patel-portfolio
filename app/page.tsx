@@ -101,7 +101,7 @@ export default function SpineSurgeonWebsite() {
         {/* Ambient spine X-ray, scoped to the hero only. Sits behind the
             foreground content (z-0); `lighten` blend so bright vertebrae glow
             against the dark paper without darkening anything beneath. */}
-        {/* Mobile: X-ray as a horizontal band spanning the section. */}
+        {/* Mobile: X-ray rotated 90° to span the section horizontally. */}
         <div
           aria-hidden
           className="md:hidden pointer-events-none absolute inset-x-0 bottom-0 h-[60vh] z-0 overflow-hidden"
@@ -110,14 +110,17 @@ export default function SpineSurgeonWebsite() {
           <img
             src="/spine-xray.jpg"
             alt=""
-            className="absolute inset-0 h-full w-full object-cover object-center opacity-30"
+            className="absolute top-1/2 left-1/2 object-cover opacity-30"
             style={{
+              width: '60vh',
+              height: '100vw',
+              transform: 'translate(-50%, -50%) rotate(90deg)',
               mixBlendMode: 'lighten',
               filter: 'sepia(1) hue-rotate(185deg) saturate(2.5) brightness(0.9) blur(0.4px)',
               WebkitMaskImage:
-                'radial-gradient(ellipse 90% 110% at 50% 60%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0) 100%)',
+                'radial-gradient(ellipse 80% 110% at 50% 50%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0) 100%)',
               maskImage:
-                'radial-gradient(ellipse 90% 110% at 50% 60%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0) 100%)',
+                'radial-gradient(ellipse 80% 110% at 50% 50%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0) 100%)',
             }}
           />
         </div>
@@ -142,8 +145,9 @@ export default function SpineSurgeonWebsite() {
           />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-20 lg:py-24">
-          <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-start">
-            <div className="lg:col-span-7 order-2 lg:order-1">
+          <div className="grid gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-12 lg:items-start">
+            {/* Intro copy — appears above the portrait on mobile, left column on desktop. */}
+            <div className="text-center lg:text-left lg:col-span-7 lg:row-start-1 lg:col-start-1">
               <p className="label-caps text-accent mb-4 sm:mb-6 text-[12px] sm:text-[14px]">
                 Fellowship Trained · Orthopedic Spine
               </p>
@@ -154,16 +158,38 @@ export default function SpineSurgeonWebsite() {
                 Patel<span className="text-accent">.</span>
               </h1>
 
-              <div className="hairline mb-5 sm:mb-6" />
+              <div className="hairline mb-5 sm:mb-6 mx-auto lg:mx-0" />
 
-              <p className="text-[15px] sm:text-lg leading-relaxed max-w-2xl mb-6 sm:mb-8 text-ink/80">
+              <p className="text-[15px] sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 text-ink/80">
                 Dedicated spine specialist providing comprehensive care for the
                 entire spectrum of spinal disorders — from neck pain and slip
                 disc to complex deformity correction and minimally invasive
                 spine surgery.
               </p>
+            </div>
 
-              <div className="flex flex-col sm:flex-row gap-3">
+            {/* Image — kept, framed as a printed plate. Spans both rows on desktop. */}
+            <div className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:row-span-2">
+              <figure className="border border-ink/40 p-2 sm:p-3 paper-dark max-w-sm mx-auto lg:max-w-none">
+                <div className="relative aspect-[4/5] w-full overflow-hidden">
+                  <Image
+                    src="https://images.unsplash.com/photo-1612531386530-97286d97c2d2?q=80&w=1887&auto=format&fit=crop"
+                    alt="Dr. Dhrumil Patel — Spine Surgeon"
+                    fill
+                    sizes="(min-width: 1024px) 32rem, (min-width: 640px) 24rem, 100vw"
+                    className="object-cover brightness-95 contrast-[1.05]"
+                    priority
+                  />
+                </div>
+                <figcaption className="mt-2 sm:mt-3 flex items-center justify-end label-caps text-ink/60 text-[11px] sm:text-[14px]">
+                  <span>Spine Surgeon</span>
+                </figcaption>
+              </figure>
+            </div>
+
+            {/* CTAs + stats — appear after the portrait on mobile, below the intro on desktop. */}
+            <div className="text-center lg:text-left lg:col-span-7 lg:col-start-1 lg:row-start-2">
+              <div className="flex flex-col sm:flex-row gap-3 sm:justify-center lg:justify-start">
                 <a
                   href="#contact"
                   className="label-caps bg-ink text-paper px-5 py-3 hover:bg-accent hover:text-paper transition text-center"
@@ -180,38 +206,19 @@ export default function SpineSurgeonWebsite() {
 
               {/* Stat row — typographic, no cards */}
               <div className="mt-8 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-6">
-                <div>
+                <div className="text-center lg:text-left">
                   <p className="label-caps text-ink/60 mb-1 sm:mb-2 text-[11px] sm:text-[14px]">Procedures</p>
                   <p className="display text-2xl sm:text-4xl">500+</p>
                 </div>
-                <div>
+                <div className="text-center lg:text-left">
                   <p className="label-caps text-ink/60 mb-1 sm:mb-2 text-[11px] sm:text-[14px]">Technique</p>
                   <p className="display text-2xl sm:text-4xl">MIS</p>
                 </div>
-                <div>
+                <div className="text-center lg:text-left">
                   <p className="label-caps text-ink/60 mb-1 sm:mb-2 text-[11px] sm:text-[14px]">Focus</p>
                   <p className="display text-2xl sm:text-4xl">Spine</p>
                 </div>
               </div>
-            </div>
-
-            {/* Image — kept, framed as a printed plate */}
-            <div className="lg:col-span-5 order-1 lg:order-2">
-              <figure className="border border-ink/40 p-2 sm:p-3 paper-dark max-w-sm mx-auto lg:max-w-none">
-                <div className="relative aspect-[4/5] w-full overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1612531386530-97286d97c2d2?q=80&w=1887&auto=format&fit=crop"
-                    alt="Dr. Dhrumil Patel — Spine Surgeon"
-                    fill
-                    sizes="(min-width: 1024px) 32rem, (min-width: 640px) 24rem, 100vw"
-                    className="object-cover brightness-95 contrast-[1.05]"
-                    priority
-                  />
-                </div>
-                <figcaption className="mt-2 sm:mt-3 flex items-center justify-end label-caps text-ink/60 text-[11px] sm:text-[14px]">
-                  <span>Spine Surgeon</span>
-                </figcaption>
-              </figure>
             </div>
           </div>
         </div>
@@ -262,22 +269,25 @@ export default function SpineSurgeonWebsite() {
 
       {/* Services */}
       <section id="services" className="paper border-b border-ink/20 relative overflow-hidden">
-        {/* Mobile: X-ray as a horizontal band spanning the section. */}
+        {/* Mobile: X-ray rotated 90° to span the section horizontally. */}
         <div
           aria-hidden
-          className="md:hidden pointer-events-none absolute inset-x-0 bottom-0 h-[28vh] z-0 overflow-hidden"
+          className="md:hidden pointer-events-none absolute inset-x-0 bottom-0 h-[60vh] z-0 overflow-hidden"
         >
           <img
             src="/spine-xray-2.jpg"
             alt=""
-            className="absolute inset-0 h-full w-full object-cover object-center opacity-25"
+            className="absolute top-1/2 left-1/2 object-cover opacity-30"
             style={{
+              width: '60vh',
+              height: '100vw',
+              transform: 'translate(-50%, -50%) rotate(90deg)',
               mixBlendMode: 'lighten',
               filter: 'sepia(1) hue-rotate(185deg) saturate(2.5) brightness(1.3) blur(0.4px)',
               WebkitMaskImage:
-                'radial-gradient(ellipse 80% 120% at 50% 50%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0) 100%)',
+                'radial-gradient(ellipse 80% 110% at 50% 50%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0) 100%)',
               maskImage:
-                'radial-gradient(ellipse 80% 120% at 50% 50%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0) 100%)',
+                'radial-gradient(ellipse 80% 110% at 50% 50%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0) 100%)',
             }}
           />
         </div>
