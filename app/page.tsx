@@ -76,6 +76,8 @@ function pad(n: number) {
 export default function SpineSurgeonWebsite() {
   return (
     <div className="paper min-h-screen text-ink">
+      <div>
+
       {/* Top masthead — print-style index bar */}
       <header className="paper border-b border-ink/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-3">
@@ -95,15 +97,51 @@ export default function SpineSurgeonWebsite() {
       </header>
 
       {/* Hero — paper layout with retained blue accent and image */}
-      <section className="paper border-b border-ink/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-20 lg:py-24">
-          {/* Issue line */}
-          <div className="flex items-center justify-between mb-6 sm:mb-10 label-caps text-[11px] sm:text-[14px] text-ink/60">
-            <span>Vol. I · Kolkata</span>
-            <span className="hidden sm:inline">Orthopedic Spine Surgery</span>
-            <span>Est. 2026</span>
-          </div>
-
+      <section className="paper border-b border-ink/20 relative overflow-hidden">
+        {/* Ambient spine X-ray, scoped to the hero only. Sits behind the
+            foreground content (z-0); `lighten` blend so bright vertebrae glow
+            against the dark paper without darkening anything beneath. */}
+        {/* Mobile: X-ray as a horizontal band spanning the section. */}
+        <div
+          aria-hidden
+          className="md:hidden pointer-events-none absolute inset-x-0 bottom-0 h-[60vh] z-0 overflow-hidden"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/spine-xray.jpg"
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover object-center opacity-30"
+            style={{
+              mixBlendMode: 'lighten',
+              filter: 'sepia(1) hue-rotate(185deg) saturate(2.5) brightness(0.9) blur(0.4px)',
+              WebkitMaskImage:
+                'radial-gradient(ellipse 90% 110% at 50% 60%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0) 100%)',
+              maskImage:
+                'radial-gradient(ellipse 90% 110% at 50% 60%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0) 100%)',
+            }}
+          />
+        </div>
+        {/* Desktop: X-ray as a vertical column on the right. */}
+        <div
+          aria-hidden
+          className="hidden md:block pointer-events-none absolute inset-y-0 -right-[8vw] lg:-right-[6vw] w-[55vw] lg:w-[48vw] z-0"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/spine-xray.jpg"
+            alt=""
+            className="absolute inset-0 h-full w-full object-contain object-right opacity-35"
+            style={{
+              mixBlendMode: 'lighten',
+              filter: 'sepia(1) hue-rotate(185deg) saturate(2.5) brightness(0.9) blur(0.4px)',
+              WebkitMaskImage:
+                'radial-gradient(ellipse 55% 65% at 70% 50%, rgba(0,0,0,1) 15%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.15) 80%, rgba(0,0,0,0) 100%)',
+              maskImage:
+                'radial-gradient(ellipse 55% 65% at 70% 50%, rgba(0,0,0,1) 15%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.15) 80%, rgba(0,0,0,0) 100%)',
+            }}
+          />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-20 lg:py-24">
           <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-start">
             <div className="lg:col-span-7 order-2 lg:order-1">
               <p className="label-caps text-accent mb-4 sm:mb-6 text-[12px] sm:text-[14px]">
@@ -170,8 +208,7 @@ export default function SpineSurgeonWebsite() {
                     priority
                   />
                 </div>
-                <figcaption className="mt-2 sm:mt-3 flex items-center justify-between label-caps text-ink/60 text-[11px] sm:text-[14px]">
-                  <span>Plate 01</span>
+                <figcaption className="mt-2 sm:mt-3 flex items-center justify-end label-caps text-ink/60 text-[11px] sm:text-[14px]">
                   <span>Spine Surgeon</span>
                 </figcaption>
               </figure>
@@ -224,8 +261,46 @@ export default function SpineSurgeonWebsite() {
       </section>
 
       {/* Services */}
-      <section id="services" className="paper border-b border-ink/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+      <section id="services" className="paper border-b border-ink/20 relative overflow-hidden">
+        {/* Mobile: X-ray as a horizontal band spanning the section. */}
+        <div
+          aria-hidden
+          className="md:hidden pointer-events-none absolute inset-x-0 bottom-0 h-[28vh] z-0 overflow-hidden"
+        >
+          <img
+            src="/spine-xray-2.jpg"
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover object-center opacity-25"
+            style={{
+              mixBlendMode: 'lighten',
+              filter: 'sepia(1) hue-rotate(185deg) saturate(2.5) brightness(1.3) blur(0.4px)',
+              WebkitMaskImage:
+                'radial-gradient(ellipse 80% 120% at 50% 50%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0) 100%)',
+              maskImage:
+                'radial-gradient(ellipse 80% 120% at 50% 50%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0) 100%)',
+            }}
+          />
+        </div>
+        {/* Desktop: X-ray as a vertical column on the left. */}
+        <div
+          aria-hidden
+          className="hidden md:block pointer-events-none absolute inset-y-0 -left-[16vw] lg:-left-[14vw] w-[55vw] lg:w-[48vw] z-0"
+        >
+          <img
+            src="/spine-xray-2.jpg"
+            alt=""
+            className="absolute inset-0 h-full w-full object-contain object-left opacity-35"
+            style={{
+              mixBlendMode: 'lighten',
+              filter: 'sepia(1) hue-rotate(185deg) saturate(2.5) brightness(1.3) blur(0.4px)',
+              WebkitMaskImage:
+                'radial-gradient(ellipse 55% 65% at 30% 50%, rgba(0,0,0,1) 15%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.15) 80%, rgba(0,0,0,0) 100%)',
+              maskImage:
+                'radial-gradient(ellipse 55% 65% at 30% 50%, rgba(0,0,0,1) 15%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.15) 80%, rgba(0,0,0,0) 100%)',
+            }}
+          />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 sm:gap-4 mb-8 sm:mb-10">
             <div>
               <p className="label-caps text-accent mb-2 sm:mb-3 text-[12px] sm:text-[14px]">§ Services</p>
@@ -420,9 +495,9 @@ export default function SpineSurgeonWebsite() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3 label-caps text-ink/60 text-[11px] sm:text-[14px] text-center sm:text-left">
           <p>© 2026 Dr. Dhrumil Patel</p>
           <p>Orthopedic Spine Surgeon · Kolkata</p>
-          <p>№ 01 — Printed Edition</p>
         </div>
       </footer>
+      </div>
     </div>
   );
 }
