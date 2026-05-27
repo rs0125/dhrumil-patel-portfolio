@@ -13,14 +13,14 @@ const config: Config = {
         mono: ['var(--font-mono)', 'PT Mono', 'ui-monospace', 'monospace'],
       },
       colors: {
-        // Dark theme tokens — "ink" is now light text, "paper" is the dark surface.
-        ink: '#ECECEC',
-        paper: '#0E0F12',
-        paperDark: '#16181D',
-        rule: '#2A2D34',
-        muted: '#9AA0A6',
-        accent: '#60A5FA',
-        accentDark: '#3B82F6',
+        // Light theme tokens — "ink" is dark text, "paper" is the light surface.
+        ink: '#1A1C20',
+        paper: '#F7F5F0',
+        paperDark: '#EFECE4',
+        rule: '#D6D2C8',
+        muted: '#6B7177',
+        accent: '#2563EB',
+        accentDark: '#1D4ED8',
       },
       borderRadius: {
         sm: '4px',

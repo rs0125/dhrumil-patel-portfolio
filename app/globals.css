@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 :root {
-  /* Dark "paper" — inverted print aesthetic */
-  --paper: #0e0f12;        /* base dark surface */
-  --paper-dark: #16181d;   /* slightly elevated dark surface */
-  --ink: #ececec;          /* primary text/foreground */
-  --rule: #2a2d34;         /* hairline rule */
-  --muted: #9aa0a6;        /* secondary text */
-  --accent: #60a5fa;       /* keep the blue, brightened for dark bg */
-  --accent-dark: #3b82f6;
+  /* Light "paper" — print aesthetic */
+  --paper: #f7f5f0;        /* base warm-white surface */
+  --paper-dark: #efece4;   /* slightly recessed/elevated surface */
+  --ink: #1a1c20;          /* primary text/foreground */
+  --rule: #d6d2c8;         /* hairline rule */
+  --muted: #6b7177;        /* secondary text */
+  --accent: #2563eb;       /* blue accent, deepened for light bg */
+  --accent-dark: #1d4ed8;
 }
 
 html,
@@ -31,12 +31,12 @@ body {
   box-sizing: border-box;
 }
 
-/* Dark paper grain — subtle light-dotted noise so it still feels printed. */
+/* Paper grain — subtle dark-dotted noise so it feels printed on stock. */
 .paper {
   background-color: var(--paper);
   background-image:
-    radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    radial-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+    radial-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    radial-gradient(rgba(0, 0, 0, 0.022) 1px, transparent 1px);
   background-size: 3px 3px, 7px 7px;
   background-position: 0 0, 1px 2px;
 }
@@ -44,8 +44,8 @@ body {
 .paper-dark {
   background-color: var(--paper-dark);
   background-image:
-    radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    radial-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+    radial-gradient(rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    radial-gradient(rgba(0, 0, 0, 0.028) 1px, transparent 1px);
   background-size: 3px 3px, 7px 7px;
   background-position: 0 0, 1px 2px;
 }
@@ -70,7 +70,7 @@ body {
   }
 
   .hairline-soft {
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
   }
 
   .marker {
@@ -82,5 +82,5 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: #0a0a0a;
+  color: #ffffff;
 }

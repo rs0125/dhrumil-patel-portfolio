@@ -98,52 +98,6 @@ export default function SpineSurgeonWebsite() {
 
       {/* Hero — paper layout with retained blue accent and image */}
       <section className="paper border-b border-ink/20 relative overflow-hidden">
-        {/* Ambient spine X-ray, scoped to the hero only. Sits behind the
-            foreground content (z-0); `lighten` blend so bright vertebrae glow
-            against the dark paper without darkening anything beneath. */}
-        {/* Mobile: X-ray rotated 90° to span the section horizontally. */}
-        <div
-          aria-hidden
-          className="md:hidden pointer-events-none absolute inset-x-0 bottom-0 h-[60vh] z-0 overflow-hidden"
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/spine-xray.jpg"
-            alt=""
-            className="absolute top-1/2 left-1/2 object-cover opacity-30"
-            style={{
-              width: '60vh',
-              height: '100vw',
-              transform: 'translate(-50%, -50%) rotate(90deg)',
-              mixBlendMode: 'lighten',
-              filter: 'sepia(1) hue-rotate(185deg) saturate(2.5) brightness(0.9) blur(0.4px)',
-              WebkitMaskImage:
-                'radial-gradient(ellipse 80% 110% at 50% 50%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0) 100%)',
-              maskImage:
-                'radial-gradient(ellipse 80% 110% at 50% 50%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0) 100%)',
-            }}
-          />
-        </div>
-        {/* Desktop: X-ray as a vertical column on the right. */}
-        <div
-          aria-hidden
-          className="hidden md:block pointer-events-none absolute inset-y-0 -right-[8vw] lg:-right-[6vw] w-[55vw] lg:w-[48vw] z-0"
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/spine-xray.jpg"
-            alt=""
-            className="absolute inset-0 h-full w-full object-contain object-right opacity-35"
-            style={{
-              mixBlendMode: 'lighten',
-              filter: 'sepia(1) hue-rotate(185deg) saturate(2.5) brightness(0.9) blur(0.4px)',
-              WebkitMaskImage:
-                'radial-gradient(ellipse 55% 65% at 70% 50%, rgba(0,0,0,1) 15%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.15) 80%, rgba(0,0,0,0) 100%)',
-              maskImage:
-                'radial-gradient(ellipse 55% 65% at 70% 50%, rgba(0,0,0,1) 15%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.15) 80%, rgba(0,0,0,0) 100%)',
-            }}
-          />
-        </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-20 lg:py-24">
           <div className="grid gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-12 lg:items-start">
             {/* Intro copy — appears above the portrait on mobile, left column on desktop. */}
@@ -269,47 +223,6 @@ export default function SpineSurgeonWebsite() {
 
       {/* Services */}
       <section id="services" className="paper border-b border-ink/20 relative overflow-hidden">
-        {/* Mobile: X-ray rotated 90° to span the section horizontally. */}
-        <div
-          aria-hidden
-          className="md:hidden pointer-events-none absolute inset-x-0 bottom-0 h-[60vh] z-0 overflow-hidden"
-        >
-          <img
-            src="/spine-xray-2.jpg"
-            alt=""
-            className="absolute top-1/2 left-1/2 object-cover opacity-30"
-            style={{
-              width: '60vh',
-              height: '100vw',
-              transform: 'translate(-50%, -50%) rotate(90deg)',
-              mixBlendMode: 'lighten',
-              filter: 'sepia(1) hue-rotate(185deg) saturate(2.5) brightness(1.3) blur(0.4px)',
-              WebkitMaskImage:
-                'radial-gradient(ellipse 80% 110% at 50% 50%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0) 100%)',
-              maskImage:
-                'radial-gradient(ellipse 80% 110% at 50% 50%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0) 100%)',
-            }}
-          />
-        </div>
-        {/* Desktop: X-ray as a vertical column on the left. */}
-        <div
-          aria-hidden
-          className="hidden md:block pointer-events-none absolute inset-y-0 -left-[16vw] lg:-left-[14vw] w-[55vw] lg:w-[48vw] z-0"
-        >
-          <img
-            src="/spine-xray-2.jpg"
-            alt=""
-            className="absolute inset-0 h-full w-full object-contain object-left opacity-35"
-            style={{
-              mixBlendMode: 'lighten',
-              filter: 'sepia(1) hue-rotate(185deg) saturate(2.5) brightness(1.3) blur(0.4px)',
-              WebkitMaskImage:
-                'radial-gradient(ellipse 55% 65% at 30% 50%, rgba(0,0,0,1) 15%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.15) 80%, rgba(0,0,0,0) 100%)',
-              maskImage:
-                'radial-gradient(ellipse 55% 65% at 30% 50%, rgba(0,0,0,1) 15%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.15) 80%, rgba(0,0,0,0) 100%)',
-            }}
-          />
-        </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 sm:gap-4 mb-8 sm:mb-10">
             <div>
