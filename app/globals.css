@@ -3,14 +3,16 @@
 @tailwind utilities;
 
 :root {
-  /* Light "paper" — print aesthetic */
-  --paper: #f7f5f0;        /* base warm-white surface */
-  --paper-dark: #efece4;   /* slightly recessed/elevated surface */
-  --ink: #1a1c20;          /* primary text/foreground */
-  --rule: #d6d2c8;         /* hairline rule */
-  --muted: #6b7177;        /* secondary text */
-  --accent: #2563eb;       /* blue accent, deepened for light bg */
-  --accent-dark: #1d4ed8;
+  --bg: #f7f9ff;          /* page backdrop, mild blue */
+  --surface: #ffffff;     /* main card / hero surface */
+  --surface-2: #f6f9ff;   /* subtle inner panels, mild blue */
+  --ink: #0a1838;         /* primary text, navy-tinted */
+  --ink-2: #1c2a4d;       /* secondary heading */
+  --muted: #5a6a8a;       /* secondary text, blue-gray */
+  --hairline: #e6ecf8;    /* borders, mild blue */
+  --pill: #f0f4ff;        /* pill / tag bg */
+  --accent: #2f6bff;      /* primary blue */
+  --accent-dark: #1f55e6;
 }
 
 html,
@@ -20,67 +22,98 @@ body {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   overflow-x: hidden;
-  background: var(--paper);
+  background: var(--bg);
   color: var(--ink);
-  font-family: var(--font-body), Roboto, system-ui, sans-serif;
+  font-family: var(--font-body), 'Inter', system-ui, -apple-system, sans-serif;
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 * {
   box-sizing: border-box;
 }
 
-/* Paper grain — subtle dark-dotted noise so it feels printed on stock. */
-.paper {
-  background-color: var(--paper);
-  background-image:
-    radial-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
-    radial-gradient(rgba(0, 0, 0, 0.022) 1px, transparent 1px);
-  background-size: 3px 3px, 7px 7px;
-  background-position: 0 0, 1px 2px;
-}
-
-.paper-dark {
-  background-color: var(--paper-dark);
-  background-image:
-    radial-gradient(rgba(0, 0, 0, 0.045) 1px, transparent 1px),
-    radial-gradient(rgba(0, 0, 0, 0.028) 1px, transparent 1px);
-  background-size: 3px 3px, 7px 7px;
-  background-position: 0 0, 1px 2px;
-}
-
 @layer components {
-  .label-caps {
-    font-family: var(--font-mono), 'PT Mono', ui-monospace, monospace;
-    font-size: 14px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-  }
-
   .display {
-    font-family: var(--font-display), Montserrat, sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.01em;
+    font-family: var(--font-display), 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     line-height: 1.05;
+    color: var(--ink);
   }
 
-  .hairline {
-    border-top: 1px solid var(--rule);
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--pill);
+    border-radius: 9999px;
+    padding: 0.45rem 0.95rem;
+    font-size: 13px;
+    color: var(--ink-2);
+    font-weight: 500;
   }
 
-  .hairline-soft {
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
+  .pill-dot::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: var(--ink);
   }
 
-  .marker {
-    font-family: var(--font-mono), 'PT Mono', monospace;
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border-radius: 9999px;
+    padding: 0.7rem 1.25rem;
+    font-weight: 600;
     font-size: 14px;
-    letter-spacing: 0.12em;
+    transition: background 0.15s ease;
+  }
+  .btn-primary:hover { background: var(--accent-dark); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--hairline);
+    border-radius: 9999px;
+    padding: 0.7rem 1.25rem;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .btn-outline:hover { background: var(--surface-2); }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 18px;
+  }
+
+  .soft-card {
+    background: var(--surface-2);
+    border-radius: 16px;
+  }
+
+  .floating-chip {
+    background: #fff;
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 0.55rem 0.8rem;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+    font-size: 13px;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
   }
 }
 
 ::selection {
   background: var(--accent);
-  color: #ffffff;
+  color: #fff;
 }

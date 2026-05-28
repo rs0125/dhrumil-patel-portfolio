@@ -1,25 +1,18 @@
 import type { Metadata, Viewport } from 'next';
-import { Montserrat, Roboto, PT_Mono } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 
-const montserrat = Montserrat({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
-  variable: '--font-display',
-  display: 'swap',
-});
-
-const roboto = Roboto({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '700'],
+  weight: ['400', '500', '600', '700', '800'],
   variable: '--font-body',
   display: 'swap',
 });
 
-const ptMono = PT_Mono({
+const interDisplay = Inter({
   subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-mono',
+  weight: ['700', '800', '900'],
+  variable: '--font-display',
   display: 'swap',
 });
 
@@ -43,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${roboto.variable} ${ptMono.variable}`}
+      className={`${inter.variable} ${interDisplay.variable}`}
     >
       <body>{children}</body>
     </html>

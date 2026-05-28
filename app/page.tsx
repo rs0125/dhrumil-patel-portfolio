@@ -36,19 +36,6 @@ const expertise = [
   'Spinal Tumors',
   'Spine Infections',
   'Revision Spine Surgery',
-  'Osteoporotic Fractures',
-  'Chronic Back Pain',
-];
-
-const conditions = [
-  'Neck Pain',
-  'Back Pain',
-  'Sciatica',
-  'Disc Prolapse',
-  'Spinal Trauma',
-  'Scoliosis',
-  'Spinal TB',
-  'Spinal Tumors',
 ];
 
 const testimonials = [
@@ -69,357 +56,394 @@ const testimonials = [
   },
 ];
 
-function pad(n: number) {
-  return n.toString().padStart(2, '0');
+function LogoMark() {
+  return (
+    <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-accent text-white">
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden
+      >
+        <path
+          d="M12 2v6m0 0a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm0 6v8a4 4 0 0 1-4 4"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </span>
+  );
+}
+
+function ShieldIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M12 3 4 6v6c0 4.5 3.2 8.4 8 9 4.8-.6 8-4.5 8-9V6l-8-3Z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function TrendIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="m4 17 6-6 4 4 6-8"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M14 7h6v6"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function StarIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2Z" />
+    </svg>
+  );
 }
 
 export default function SpineSurgeonWebsite() {
   return (
-    <div className="paper min-h-screen text-ink">
-      <div>
+    <div className="min-h-screen text-ink">
+      {/* HERO — full-width */}
+      <section className="relative overflow-hidden bg-surface">
+        {/* Decorative blue blob behind portrait */}
+        <div
+          className="pointer-events-none absolute -top-12 right-[22%] hidden lg:block"
+          aria-hidden
+        >
+          <div className="h-64 w-64 rounded-[40%_60%_55%_45%/55%_45%_60%_40%] bg-gradient-to-br from-accent to-[#7aa6ff] opacity-90 blur-[1px]" />
+        </div>
 
-      {/* Top masthead — print-style index bar */}
-      <header className="paper border-b border-ink/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-3">
-          <nav className="hidden md:flex items-center gap-6 label-caps text-ink/70">
+        {/* Nav */}
+        <header className="relative z-10 mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-5 sm:px-8 lg:px-12 pt-6 sm:pt-8">
+          <div className="flex items-center gap-3">
+            <LogoMark />
+            <span className="text-[18px] font-semibold tracking-tight">
+              Dr. Dhrumil
+            </span>
+          </div>
+          <nav className="hidden md:flex items-center gap-8 text-[14px] text-muted">
             <a href="#about" className="hover:text-ink transition">About</a>
             <a href="#services" className="hover:text-ink transition">Services</a>
-            <a href="#conditions" className="hover:text-ink transition">Conditions</a>
             <a href="#contact" className="hover:text-ink transition">Contact</a>
           </nav>
           <a
             href="#contact"
-            className="label-caps text-[12px] sm:text-[14px] border border-ink/70 px-3 py-1.5 sm:py-2 hover:bg-ink hover:text-paper transition ml-auto"
+            className="btn-primary"
           >
-            Book →
+            Book Appointment
           </a>
-        </div>
-      </header>
+        </header>
 
-      {/* Hero — paper layout with retained blue accent and image */}
-      <section className="paper border-b border-ink/20 relative overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-20 lg:py-24">
-          <div className="grid gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-12 lg:items-start">
-            {/* Intro copy — appears above the portrait on mobile, left column on desktop. */}
-            <div className="text-center lg:text-left lg:col-span-7 lg:row-start-1 lg:col-start-1">
-              <p className="label-caps text-accent mb-4 sm:mb-6 text-[12px] sm:text-[14px]">
-                Fellowship Trained · Orthopedic Spine
-              </p>
+        <div className="relative z-10 mx-auto grid max-w-[1400px] gap-8 px-5 sm:px-8 lg:px-12 pt-10 sm:pt-14 lg:pt-16 pb-10 sm:pb-14 lg:grid-cols-12 lg:gap-10 lg:items-center">
+            {/* Left: copy */}
+            <div className="lg:col-span-7">
+              <span className="pill pill-dot mb-5">Consult Available</span>
 
-              <h1 className="display text-[40px] leading-[1.05] sm:text-[64px] lg:text-[88px] tracking-tight mb-5 sm:mb-6">
-                Dr. Dhrumil
+              <h1 className="display text-[40px] sm:text-[60px] lg:text-[82px] leading-[1.02]">
+                Your Spine,
                 <br />
-                Patel<span className="text-accent">.</span>
+                Our Top Priority
               </h1>
 
-              <div className="hairline mb-5 sm:mb-6 mx-auto lg:mx-0" />
-
-              <p className="text-[15px] sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 text-ink/80">
-                Dedicated spine specialist providing comprehensive care for the
-                entire spectrum of spinal disorders — from neck pain and slip
-                disc to complex deformity correction and minimally invasive
-                spine surgery.
+              <p className="mt-5 max-w-xl text-[15px] sm:text-[16px] text-muted">
+                Consult with a fellowship-trained spine surgeon. Expert care for
+                slip disc, sciatica, scoliosis, trauma, and complex spinal
+                disorders — diagnosis to recovery.
               </p>
-            </div>
 
-            {/* Image — kept, framed as a printed plate. Spans both rows on desktop. */}
-            <div className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:row-span-2">
-              <figure className="border border-ink/40 p-2 sm:p-3 paper-dark max-w-sm mx-auto lg:max-w-none">
-                <div className="relative aspect-[4/5] w-full overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1612531386530-97286d97c2d2?q=80&w=1887&auto=format&fit=crop"
-                    alt="Dr. Dhrumil Patel — Spine Surgeon"
-                    fill
-                    sizes="(min-width: 1024px) 32rem, (min-width: 640px) 24rem, 100vw"
-                    className="object-cover brightness-95 contrast-[1.05]"
-                    priority
-                  />
-                </div>
-                <figcaption className="mt-2 sm:mt-3 flex items-center justify-end label-caps text-ink/60 text-[11px] sm:text-[14px]">
-                  <span>Spine Surgeon</span>
-                </figcaption>
-              </figure>
-            </div>
-
-            {/* CTAs + stats — appear after the portrait on mobile, below the intro on desktop. */}
-            <div className="text-center lg:text-left lg:col-span-7 lg:col-start-1 lg:row-start-2">
-              <div className="flex flex-col sm:flex-row gap-3 sm:justify-center lg:justify-start">
-                <a
-                  href="#contact"
-                  className="label-caps bg-ink text-paper px-5 py-3 hover:bg-accent hover:text-paper transition text-center"
-                >
-                  Book Appointment →
+              {/* CTAs */}
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a href="#contact" className="btn-primary">
+                  Book Appointment
                 </a>
-                <a
-                  href="#services"
-                  className="label-caps border border-ink/70 px-5 py-3 hover:bg-ink hover:text-paper transition text-center"
-                >
+                <a href="#services" className="btn-outline">
                   View Services
                 </a>
               </div>
 
-              {/* Stat row — typographic, no cards */}
-              <div className="mt-8 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-6">
-                <div className="text-center lg:text-left">
-                  <p className="label-caps text-ink/60 mb-1 sm:mb-2 text-[11px] sm:text-[14px]">Procedures</p>
-                  <p className="display text-2xl sm:text-4xl">500+</p>
+              {/* Stats */}
+              <div className="mt-8 flex flex-wrap gap-x-10 gap-y-5">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-surface2 text-ink2">
+                    <ShieldIcon />
+                  </span>
+                  <div>
+                    <p className="display text-[22px] leading-none">98.5%</p>
+                    <p className="text-[13px] text-muted mt-1">Patient Satisfaction</p>
+                  </div>
                 </div>
-                <div className="text-center lg:text-left">
-                  <p className="label-caps text-ink/60 mb-1 sm:mb-2 text-[11px] sm:text-[14px]">Technique</p>
-                  <p className="display text-2xl sm:text-4xl">MIS</p>
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-surface2 text-ink2">
+                    <TrendIcon />
+                  </span>
+                  <div>
+                    <p className="display text-[22px] leading-none">500+</p>
+                    <p className="text-[13px] text-muted mt-1">Spine Procedures</p>
+                  </div>
                 </div>
-                <div className="text-center lg:text-left">
-                  <p className="label-caps text-ink/60 mb-1 sm:mb-2 text-[11px] sm:text-[14px]">Focus</p>
-                  <p className="display text-2xl sm:text-4xl">Spine</p>
+              </div>
+            </div>
+
+            {/* Right: portrait + floating chips */}
+            <div className="relative lg:col-span-5">
+              <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl lg:max-w-none">
+                <Image
+                  src="https://images.unsplash.com/photo-1612531386530-97286d97c2d2?q=80&w=1887&auto=format&fit=crop"
+                  alt="Dr. Dhrumil Patel — Spine Surgeon"
+                  fill
+                  sizes="(min-width: 1024px) 32rem, (min-width: 640px) 24rem, 100vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+
+              {/* 24/7 chip */}
+              <div className="absolute left-2 top-6 sm:left-4 sm:top-10">
+                <span className="floating-chip">24/7 Available</span>
+              </div>
+
+              {/* Rating chip */}
+              <div className="absolute -left-2 bottom-16 sm:left-4 sm:bottom-24">
+                <span className="floating-chip">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-md bg-accent text-white">
+                    <StarIcon />
+                  </span>
+                  <span className="flex flex-col leading-tight">
+                    <span className="font-semibold text-[14px]">4.9</span>
+                    <span className="text-[11px] text-muted">Based on 2.5k Reviews</span>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+      </section>
+
+      {/* Body sections — full-width on white, flowing */}
+      <div className="bg-surface">
+        {/* ABOUT */}
+        <section id="about" className="border-t border-hairline">
+          <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 py-16 sm:py-24">
+            <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+              <div className="lg:col-span-5">
+                <span className="pill mb-5">About</span>
+                <h2 className="display text-[32px] sm:text-[44px] lg:text-[52px]">
+                  Personalized &amp; evidence-based spine care.
+                </h2>
+                <p className="mt-6 text-[16px] sm:text-[17px] text-muted max-w-md leading-relaxed">
+                  Dr. Dhrumil Patel is an orthopedic spine surgeon focused on
+                  delivering advanced and patient-centric care for all
+                  spine-related conditions — combining modern techniques with a
+                  commitment to restore mobility, relieve pain, and improve
+                  quality of life.
+                </p>
+              </div>
+
+              <div className="lg:col-span-7">
+                <p className="text-[13px] font-semibold uppercase tracking-wider text-muted mb-5">
+                  Areas of expertise
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {expertise.map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-center justify-between rounded-2xl bg-surface2 px-5 py-4"
+                    >
+                      <span className="text-[15px] text-ink2">{item}</span>
+                      <span className="text-[12px] font-semibold text-accent">Spine</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* About */}
-      <section id="about" className="paper-dark border-b border-ink/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-          <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-start">
-            <div className="lg:col-span-5">
-              <p className="label-caps text-accent mb-3 sm:mb-4 text-[12px] sm:text-[14px]">§ About</p>
-              <h2 className="display text-[28px] sm:text-4xl lg:text-5xl mb-5 sm:mb-6">
-                Personalized &amp; evidence-based spine care.
-              </h2>
-              <div className="hairline-soft mb-5 sm:mb-6" />
-              <p className="text-[15px] sm:text-lg leading-relaxed text-ink/80">
-                Dr. Dhrumil Patel is an orthopedic spine surgeon focused on
-                delivering advanced and patient-centric care for all
-                spine-related conditions. With training in modern spinal
-                techniques and academic involvement in spine surgery, the goal
-                is to restore mobility, relieve pain, and improve quality of
-                life.
+        {/* SERVICES */}
+        <section id="services" className="border-t border-hairline">
+          <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 py-16 sm:py-24">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-10">
+              <div>
+                <span className="pill mb-5">Services</span>
+                <h2 className="display text-[32px] sm:text-[44px] lg:text-[52px] max-w-2xl">
+                  Comprehensive spine treatment.
+                </h2>
+              </div>
+              <p className="text-muted text-[16px] max-w-sm">
+                Specialized management for the complete range of spinal
+                disorders using modern surgical and non-surgical techniques.
               </p>
             </div>
 
-            <div className="lg:col-span-7">
-              <p className="label-caps text-ink/60 mb-3 sm:mb-4 text-[12px] sm:text-[14px]">Areas of expertise</p>
-              <ul className="divide-y divide-ink/20 border-t border-b border-ink/20">
-                {expertise.map((item, i) => (
-                  <li
-                    key={item}
-                    className="flex items-center justify-between py-2.5 sm:py-3"
-                  >
-                    <div className="flex items-center gap-3 sm:gap-4">
-                      <span className="marker text-ink/50 w-7 sm:w-8 text-[12px] sm:text-[14px]">{pad(i + 1)}</span>
-                      <span className="text-[15px] sm:text-lg">{item}</span>
-                    </div>
-                    <span className="text-accent label-caps hidden sm:inline">
-                      Spine
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services */}
-      <section id="services" className="paper border-b border-ink/20 relative overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 sm:gap-4 mb-8 sm:mb-10">
-            <div>
-              <p className="label-caps text-accent mb-2 sm:mb-3 text-[12px] sm:text-[14px]">§ Services</p>
-              <h2 className="display text-[28px] sm:text-4xl lg:text-5xl max-w-2xl">
-                Comprehensive spine treatment.
-              </h2>
-            </div>
-            <p className="text-ink/70 text-[15px] sm:text-base max-w-md">
-              Specialized management for the complete range of spinal disorders
-              using modern surgical and non-surgical techniques.
-            </p>
-          </div>
-
-          <div className="hairline mb-0" />
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service, index) => (
-              <article
-                key={service.title}
-                className="border-b border-ink/20 sm:border-r p-5 sm:p-8 last:border-r-0 sm:[&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(3n)]:border-r-0 group"
-              >
-                <div className="flex items-center justify-between mb-4 sm:mb-6">
-                  <span className="marker text-ink/50 text-[12px] sm:text-[14px]">{pad(index + 1)}</span>
-                  <span className="label-caps text-ink/50 group-hover:text-accent transition text-[12px] sm:text-[14px]">
-                    Service
-                  </span>
-                </div>
-                <h3 className="display text-xl sm:text-[28px] mb-3 sm:mb-4 leading-tight">
-                  {service.title}
-                </h3>
-                <p className="text-ink/75 text-[15px] sm:text-base leading-relaxed">
-                  {service.desc}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Conditions */}
-      <section id="conditions" className="paper-dark border-b border-ink/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20 grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-start">
-          <div className="lg:col-span-5">
-            <p className="label-caps text-accent mb-3 sm:mb-4 text-[12px] sm:text-[14px]">§ Conditions Treated</p>
-            <h2 className="display text-[28px] sm:text-4xl lg:text-5xl mb-5 sm:mb-6">
-              Full spectrum spine care.
-            </h2>
-            <div className="hairline-soft mb-5 sm:mb-6" />
-            <p className="text-[15px] sm:text-lg leading-relaxed text-ink/80">
-              Diagnosis and treatment for degenerative, traumatic, infectious,
-              tumorous, and deformity-related spinal disorders.
-            </p>
-          </div>
-
-          <div className="lg:col-span-7">
-            <div className="grid grid-cols-2 border-l border-t border-ink/20">
-              {conditions.map((item, i) => (
-                <div
-                  key={item}
-                  className="border-r border-b border-ink/20 p-3.5 sm:p-6 flex items-baseline justify-between gap-2"
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {services.map((service) => (
+                <article
+                  key={service.title}
+                  className="rounded-2xl bg-surface2 p-7 transition hover:bg-white hover:shadow-[0_10px_40px_rgba(15,23,42,0.06)]"
                 >
-                  <span className="text-[14px] sm:text-lg">{item}</span>
-                  <span className="marker text-ink/40 text-[11px] sm:text-[14px]">{pad(i + 1)}</span>
-                </div>
+                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+                      <path
+                        d="M12 4v16M4 12h16"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="display text-[22px] sm:text-[24px] mb-3 leading-snug">
+                    {service.title}
+                  </h3>
+                  <p className="text-[15px] text-muted leading-relaxed">
+                    {service.desc}
+                  </p>
+                </article>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Testimonials */}
-      <section className="paper border-b border-ink/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-          <div className="mb-8 sm:mb-10">
-            <p className="label-caps text-accent mb-2 sm:mb-3 text-[12px] sm:text-[14px]">§ Patient Voices</p>
-            <h2 className="display text-[28px] sm:text-4xl lg:text-5xl max-w-3xl">
-              Trusted care, patient-focused outcomes.
-            </h2>
-          </div>
-
-          <div className="hairline mb-0" />
-
-          <div className="grid md:grid-cols-3">
-            {testimonials.map((item, i) => (
-              <figure
-                key={item.name}
-                className="border-b border-ink/20 md:border-r last:border-r-0 p-5 sm:p-8"
-              >
-                <div className="flex items-center justify-between mb-4 sm:mb-6">
-                  <span className="marker text-ink/50 text-[12px] sm:text-[14px]">{pad(i + 1)}</span>
-                  <span className="display text-3xl sm:text-4xl text-accent leading-none">
-                    “
-                  </span>
-                </div>
-                <blockquote className="text-ink/80 text-[15px] sm:text-lg leading-relaxed mb-5 sm:mb-6">
-                  {item.review}
-                </blockquote>
-                <figcaption className="label-caps text-ink/70 text-[12px] sm:text-[14px]">
-                  — {item.name}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section id="contact" className="paper-dark border-b border-ink/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-          <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 items-start">
-            <div className="lg:col-span-6">
-              <p className="label-caps text-accent mb-3 sm:mb-4 text-[12px] sm:text-[14px]">§ Contact</p>
-              <h2 className="display text-[28px] sm:text-4xl lg:text-5xl mb-5 sm:mb-6">
-                Schedule your spine consultation.
+        {/* TESTIMONIALS */}
+        <section className="border-t border-hairline">
+          <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 py-16 sm:py-24">
+            <div className="mb-10">
+              <span className="pill mb-5">Patient Voices</span>
+              <h2 className="display text-[32px] sm:text-[44px] lg:text-[52px] max-w-3xl">
+                Trusted care, patient-focused outcomes.
               </h2>
-              <div className="hairline-soft mb-5 sm:mb-6" />
-              <p className="text-[15px] sm:text-lg text-ink/80 leading-relaxed mb-6 sm:mb-8">
-                For appointments, second opinions, and advanced spine treatment
-                consultations.
-              </p>
-
-              <dl className="space-y-3 sm:space-y-5">
-                <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
-                  <dt className="label-caps text-ink/60 w-20 sm:w-24 shrink-0 text-[12px] sm:text-[14px]">Phone</dt>
-                  <dd className="text-[16px] sm:text-xl">+91 XXXXX XXXXX</dd>
-                </div>
-                <div className="hairline-soft" />
-                <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
-                  <dt className="label-caps text-ink/60 w-20 sm:w-24 shrink-0 text-[12px] sm:text-[14px]">Email</dt>
-                  <dd className="text-[16px] sm:text-xl break-all">
-                    <a
-                      href="mailto:drdhrumilspine@gmail.com"
-                      className="hover:text-accent transition"
-                    >
-                      drdhrumilspine@gmail.com
-                    </a>
-                  </dd>
-                </div>
-                <div className="hairline-soft" />
-                <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
-                  <dt className="label-caps text-ink/60 w-20 sm:w-24 shrink-0 text-[12px] sm:text-[14px]">Place</dt>
-                  <dd className="text-[16px] sm:text-xl">Kolkata, India</dd>
-                </div>
-              </dl>
             </div>
 
-            <div className="lg:col-span-6">
-              <form className="border border-ink/30 p-5 sm:p-8 paper">
-                <p className="label-caps text-ink/60 mb-5 sm:mb-6 text-[12px] sm:text-[14px]">Request appointment</p>
-
-                <div className="space-y-4 sm:space-y-5">
-                  <label className="block">
-                    <span className="label-caps text-ink/60 text-[12px] sm:text-[14px]">Name</span>
-                    <input
-                      type="text"
-                      className="mt-2 w-full bg-transparent border-b border-ink/30 focus:border-accent outline-none py-2 text-[16px]"
-                      placeholder="Your full name"
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="label-caps text-ink/60 text-[12px] sm:text-[14px]">Phone</span>
-                    <input
-                      type="tel"
-                      className="mt-2 w-full bg-transparent border-b border-ink/30 focus:border-accent outline-none py-2 text-[16px]"
-                      placeholder="+91"
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="label-caps text-ink/60 text-[12px] sm:text-[14px]">Concern</span>
-                    <textarea
-                      rows={3}
-                      className="mt-2 w-full bg-transparent border-b border-ink/30 focus:border-accent outline-none py-2 text-[16px] resize-none"
-                      placeholder="Briefly describe your condition"
-                    />
-                  </label>
-                </div>
-
-                <button
-                  type="button"
-                  className="label-caps mt-6 sm:mt-8 w-full bg-ink text-paper py-3 hover:bg-accent hover:text-paper transition"
+            <div className="grid gap-3 md:grid-cols-3">
+              {testimonials.map((item) => (
+                <figure
+                  key={item.name}
+                  className="rounded-2xl bg-surface2 p-7"
                 >
-                  Send Request →
-                </button>
-              </form>
+                  <div className="mb-5 flex h-9 w-9 items-center justify-center rounded-full bg-accent text-white">
+                    <span className="text-[20px] leading-none">&ldquo;</span>
+                  </div>
+                  <blockquote className="text-[16px] text-ink2 leading-relaxed mb-6">
+                    {item.review}
+                  </blockquote>
+                  <figcaption className="text-[13px] font-semibold text-muted">
+                    — {item.name}
+                  </figcaption>
+                </figure>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Footer */}
-      <footer className="paper">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3 label-caps text-ink/60 text-[11px] sm:text-[14px] text-center sm:text-left">
-          <p>© 2026 Dr. Dhrumil Patel</p>
-          <p>Orthopedic Spine Surgeon · Kolkata</p>
-        </div>
-      </footer>
+        {/* CONTACT */}
+        <section id="contact" className="border-t border-hairline bg-surface2">
+          <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 py-16 sm:py-24">
+            <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+              <div className="lg:col-span-6">
+                <span className="pill mb-5 bg-white">Contact</span>
+                <h2 className="display text-[32px] sm:text-[44px] lg:text-[52px] mb-5">
+                  Schedule your spine consultation.
+                </h2>
+                <p className="text-[16px] text-muted mb-10 max-w-md leading-relaxed">
+                  For appointments, second opinions, and advanced spine
+                  treatment consultations.
+                </p>
+
+                <dl className="space-y-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6 rounded-2xl bg-white px-6 py-5">
+                    <dt className="text-[12px] font-semibold uppercase tracking-wider text-muted w-20 shrink-0">Phone</dt>
+                    <dd className="text-[16px] font-medium">+91 XXXXX XXXXX</dd>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6 rounded-2xl bg-white px-6 py-5">
+                    <dt className="text-[12px] font-semibold uppercase tracking-wider text-muted w-20 shrink-0">Email</dt>
+                    <dd className="text-[16px] font-medium break-all">
+                      <a
+                        href="mailto:drdhrumilspine@gmail.com"
+                        className="hover:text-accent transition"
+                      >
+                        drdhrumilspine@gmail.com
+                      </a>
+                    </dd>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6 rounded-2xl bg-white px-6 py-5">
+                    <dt className="text-[12px] font-semibold uppercase tracking-wider text-muted w-20 shrink-0">Place</dt>
+                    <dd className="text-[16px] font-medium">Kolkata, India</dd>
+                  </div>
+                </dl>
+              </div>
+
+              <div className="lg:col-span-6">
+                <form className="rounded-2xl bg-white p-7 sm:p-9 border border-hairline">
+                  <p className="text-[13px] font-semibold uppercase tracking-wider text-muted mb-6">
+                    Request appointment
+                  </p>
+
+                  <div className="space-y-4">
+                    <label className="block">
+                      <span className="text-[13px] font-semibold text-ink2">Name</span>
+                      <input
+                        type="text"
+                        className="mt-2 w-full rounded-full bg-surface2 border border-transparent px-5 py-3 text-[15px] outline-none focus:border-accent focus:bg-white"
+                        placeholder="Your full name"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-[13px] font-semibold text-ink2">Phone</span>
+                      <input
+                        type="tel"
+                        className="mt-2 w-full rounded-full bg-surface2 border border-transparent px-5 py-3 text-[15px] outline-none focus:border-accent focus:bg-white"
+                        placeholder="+91"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-[13px] font-semibold text-ink2">Concern</span>
+                      <textarea
+                        rows={3}
+                        className="mt-2 w-full rounded-2xl bg-surface2 border border-transparent px-5 py-3 text-[15px] outline-none focus:border-accent focus:bg-white resize-none"
+                        placeholder="Briefly describe your condition"
+                      />
+                    </label>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="btn-primary mt-6 w-full"
+                  >
+                    Send Request
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FOOTER */}
+        <footer className="border-t border-hairline">
+          <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 py-8 flex flex-col sm:flex-row items-center justify-between gap-2 text-[13px] text-muted">
+            <p>© 2026 Dr. Dhrumil Patel</p>
+            <p>Orthopedic Spine Surgeon · Kolkata</p>
+          </div>
+        </footer>
       </div>
     </div>
   );
